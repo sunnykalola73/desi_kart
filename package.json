@@ -1,0 +1,30 @@
+{
+  "name": "desi_kart",
+  "version": "1.0.0",
+  "description": "E-commerce website for the Indian store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel server.js -d build",
+    "start": "npm run build && nodemon build/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ist-git@git.uwaterloo.ca:ece_651/desi_kart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "eslint": "^8.33.0",
+    "nodemon": "^2.0.20"
+  }
+}

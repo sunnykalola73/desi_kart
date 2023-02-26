@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    address:{
+    addressline1:{
         type: String,
         required: true
     },

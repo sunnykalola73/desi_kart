@@ -2,7 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(express.json());
+
+const port = process.env.PORT || 3001;
 
 mongoose.connect("mongodb://localhost/ecommerce", { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -13,6 +15,10 @@ db.once("open", function () {
 });
 
 app.get("/api", (req, res) => {
+	res.send({ message: "Hello from the backend!" });
+});
+
+app.get("/", (req, res) => {
 	res.send({ message: "Hello from the backend!" });
 });
 

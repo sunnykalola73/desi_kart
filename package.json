@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && cd client && npm install && npm run build && npm run start -d",
+    "build": "npm install && cd client && npm install && npm run build",
     "start": "babel-node routes/index.js",
     "start:dev": "nodemon --exec babel-node routes/index.js"
   },

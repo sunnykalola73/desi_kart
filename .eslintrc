@@ -1,0 +1,31 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true,
+        "commonjs": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        // "indent": [  // To be updated accoring to the rules want to set-up not necessary to have all
+        //     "error",
+        //     "tab"
+        // ],
+        // "linebreak-style": [
+        //     "error",
+        //     "unix"
+        // ],
+        // "quotes": [
+        //     "error",
+        //     "single"
+        // ],
+        // "semi": [
+        //     "error",
+        //     "always"
+        // ]
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    }
+}

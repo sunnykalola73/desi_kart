@@ -4,7 +4,7 @@
   "description": "E-commerce website for the Indian store",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "npm install && cd client && npm install && npm run build && npm run start -d",
     "start": "babel-node routes/index.js",
     "start:dev": "nodemon --exec babel-node routes/index.js"
@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/node": "^7.20.7",
+    "airbnb": "^0.0.2",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -30,6 +31,7 @@
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "eslint": "^8.33.0",
+    "jest": "^29.5.0",
     "nodemon": "^2.0.20"
   }
 }

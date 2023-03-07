@@ -3,7 +3,8 @@
         "browser": true,
         "node": true,
         "es2021": true,
-        "commonjs": true
+        "commonjs": true,
+        "jest/global": true
     },
     "extends": "eslint:recommended",
     "rules": {

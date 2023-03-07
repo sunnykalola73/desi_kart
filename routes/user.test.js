@@ -1,6 +1,6 @@
-describe("test user", async () => {
+describe("test user", () => {
   it("test useer",()=>{
-    exportAllDeclaration(1+1).toBe(2);
+    expect(1+1).toBe(2);
   });
 });
 

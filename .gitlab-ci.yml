@@ -1,3 +1,4 @@
+image: node:latest
 
 stages:
   - build
@@ -7,7 +8,8 @@ build:
   image: node:latest
   stage: build
   script:
-    - npm build && npm start
+    - npm build 
+    - npm start
   cache:
     paths:
       - node_modules/

@@ -8,8 +8,8 @@ build:
   image: node:latest
   stage: build
   script:
-    - npm build 
-    - npm start
+    - npm run build 
+    - npm run start
   cache:
     paths:
       - node_modules/
@@ -26,6 +26,6 @@ test:
   dependencies:
     - build
   script:
-    - npm test:ci
+    - npm run test
   artifacts:
     when: always 

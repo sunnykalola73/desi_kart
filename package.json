@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test-coverage": "jest --coverage",
     "build": "npm install && cd client && npm install && npm run build",
     "start": "babel-node routes/index.js",
     "start:dev": "nodemon --exec babel-node routes/index.js"

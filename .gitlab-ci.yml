@@ -24,6 +24,9 @@ test:
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
   # dependencies:
   #   - build
+  cache:
+    paths:
+      - node_modules/
   script:
     - npm install
     - npm run test
@@ -33,8 +36,8 @@ test:
 coverage:
   stage: test
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
-  # dependencies:
-  #   - build
+  dependencies:
+    - test
   script:
     - npm install
     - npm run test-coverage

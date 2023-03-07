@@ -8,9 +8,7 @@ build:
   image: node:latest
   stage: build
   script:
-    - [ -s "$NVM_DIR/nvm.sh" ]
-    - \. "$NVM_DIR/nvm.sh"
-    - echo "Heelo  it worked"
+    - echo "Hello  it worked"
     - npm run build 
     - npm run start
   cache:

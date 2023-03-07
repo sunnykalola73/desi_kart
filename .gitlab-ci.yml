@@ -1,27 +1,25 @@
 image: node:alpine
 
 stages:
-  - build
+  # - build
   - test
 
-build:
-  image: node:latest
-  stage: build
-  script:
-    - echo "Hello  it worked"
-    - npm run build 
-    - npm run start
-  cache:
-    paths:
-      - node_modules/
-  artifacts:
-    expire_in: 1 days
-    when: on_success
-    paths:
-      - node_modules/
+# build:
+#   stage: build
+#   script:
+#     - echo "Hello  it worked!!"
+#     - npm run build 
+#     - npm run start
+#   cache:
+#     paths:
+#       - node_modules/
+#   artifacts:
+#     expire_in: 1 days
+#     when: on_success
+#     paths:
+#       - node_modules/
 
 test:
-  image: node:latest
   stage: test
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
   dependencies:

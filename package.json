@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test1": "env-cmd -f ./.env jest --runInBand",
     "test-coverage": "jest --coverage",
     "build": "npm install && cd client && npm install && npm run build",
     "start": "babel-node src/index.js",
@@ -35,8 +36,10 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-preset-react-app": "^10.0.1",
     "bcryptjs": "^2.4.3",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.33.0",
     "jsonwebtoken": "^9.0.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
   }
 }

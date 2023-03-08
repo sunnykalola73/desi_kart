@@ -1,6 +1,5 @@
 describe("test user", () => {
-  it("test useer",()=>{
-    expect(1+1).toBe(2);
+    it("test useer",()=>{
+      expect(1+1).toBe(2);
+    });
   });
-});
-

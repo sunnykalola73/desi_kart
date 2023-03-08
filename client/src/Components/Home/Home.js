@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { categoryList } from '../../Constants';
 
 const Home = () => {
   return (
@@ -24,6 +25,12 @@ const Home = () => {
                   <li className="nav-item">
                     <a className="nav-link" href="/cart">Cart</a>
                   </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/register">Register</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/login">Login</a>
+                  </li>
                 </ul>
               </div>
             </nav>
@@ -34,8 +41,8 @@ const Home = () => {
         <Row>
           <Col>
             <div className="jumbotron">
-              <h1>Welcome to My Ecommerce Website</h1>
-              <p>Discover our wide range of products at competitive prices</p>
+              <Image src="https://cdn.shopify.com/s/files/1/0524/1874/0389/files/Allthingsdesi_8a26573f-b748-435f-a239-559b22ea1241_1600x.gif?v=1646847947" className="card-img-top"  />
+              <Image src="https://cdn.shopify.com/s/files/1/0524/1874/0389/files/March-Banner_b842ca4c-03dd-445a-889d-0d3e10f3841a_1400x.jpg?v=1677635268" className="card-img-top" />
               <Button variant="primary" size="lg" href="#" role="button">Shop Now</Button>
             </div>
           </Col>
@@ -43,36 +50,21 @@ const Home = () => {
 
         {/* Products Section */}
         <Row>
-          <Col md={4}>
-            <div className="card">
-              <Image src="https://via.placeholder.com/300x200" rounded className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Product Name</h5>
-                <p className="card-text">Product Description</p>
-                <Button variant="primary">Add to Cart</Button>
+          {categoryList.map((category, key) => {
+            return (     
+            <Col md={4}>
+              <div className="card">
+                <Image src={category.image} rounded className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h5 className="card-title">{category.title}</h5>
+                  <p className="card-text">Product Description</p>
+                  <Button variant="primary">View Products</Button>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div className="card">
-              <Image src="https://via.placeholder.com/300x200" rounded className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Product Name</h5>
-                <p className="card-text">Product Description</p>
-                <Button variant="primary">Add to Cart</Button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div className="card">
-              <Image src="https://via.placeholder.com/300x200" rounded className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Product Name</h5>
-                <p className="card-text">Product Description</p>
-                <Button variant="primary">Add to Cart</Button>
-              </div>
-            </div>
-          </Col>
+            </Col>);
+          })}
+     
+       
         </Row>
 
         {/* Footer */}

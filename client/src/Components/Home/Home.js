@@ -1,42 +1,15 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import { categoryList } from '../../Constants';
+import { CategoryList } from './CategoryList';
+import { Header } from './Header';
+
 
 const Home = () => {
+    
   return (
     <div>
       <Container fluid>
-        {/* Navigation Bar */}
-        <Row>
-          <Col>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-              <a className="navbar-brand" href="https://google.com">DesiKart</a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/">Home</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/products">Products</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/cart">Cart</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/register">Register</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/login">Login</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </Col>
-        </Row>
-
+      <Header />
         {/* Jumbotron */}
         <Row>
           <Col>
@@ -48,24 +21,8 @@ const Home = () => {
           </Col>
         </Row>
 
-        {/* Products Section */}
-        <Row>
-          {categoryList.map((category, key) => {
-            return (     
-            <Col md={4}>
-              <div className="card">
-                <Image src={category.image} rounded className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <h5 className="card-title">{category.title}</h5>
-                  <p className="card-text">Product Description</p>
-                  <Button variant="primary">View Products</Button>
-                </div>
-              </div>
-            </Col>);
-          })}
-     
-       
-        </Row>
+        {/* Categories Section */}
+        <CategoryList/>
 
         {/* Footer */}
         <Row>

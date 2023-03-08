@@ -1,6 +1,11 @@
+import axios from 'axios';
 import React, { useState } from 'react'
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Col, Button, Row, Container, Card, Form, Image } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { NotificationManager } from 'react-notifications';
+import { Header } from './Header';
+import logo from "./../../Images/logo.png"
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -17,7 +22,9 @@ export default function Register() {
     country:"",
     pincode:""
   });
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({});
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const onChange = e => {
     const nextFormState = {
@@ -29,7 +36,8 @@ export default function Register() {
 
   const validateForm = () => {
    let isValid = true;
-   let errors = {}
+   let errors = {};
+   
    if(!form.fname.trim())
    {
     isValid = false;
@@ -108,30 +116,64 @@ export default function Register() {
    setErrors({...errors})
    return isValid;
   }
+  const clearForm = () => {
+    setForm({ 
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      mobileno: "",
+      addressline1: "",
+      addressline2 :"",
+      city: "",
+      province: "",
+      country:"",
+      pincode:""
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
+   
     if(validateForm())
     {
-      console.log(form);
+        delete form["confirmPassword"];  
+        axios
+        .post("http://localhost:3001/auth/signup", form)
+        .then((response) => {   
+            if(response.status === 201)
+            {
+                clearForm();     
+                NotificationManager.success('You have registered successfully!');          
+                localStorage.setItem("userData", JSON.stringify(response.data));  
+                setErrors({});
+                setError("");
+                navigate("/");
+            }     
+        })
+        .catch((emsg) => {         
+            setError(emsg.response.data);          
+        })
     }
   }
 
   return (
     <div>
-      <Container>
+      <Container fluid>        
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={8} lg={6} xs={12}>
           <div className="border border-2 border-primary"></div>
             <Card className="shadow px-4">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-center text-uppercase ">Logo</h2>
+                <Image className="img-fluid" src={logo}/>
                   <div className="mb-3">
                     <Form>
+                    {error && <p style={{"color": "red"}}>{error}</p>}
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                          First Name
+                          First Name<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter First Name"  name="fname" value={form.fname} onChange={onChange}/>
                         {errors.fname && <p style={{"color": "red"}}>{errors.fname}</p>}
@@ -139,7 +181,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                          Last Name
+                          Last Name<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Last Name"  name="lname" value={form.lname} onChange={onChange}/>
                         {errors.lname && <p style={{"color": "red"}}>{errors.lname}</p>}
@@ -147,7 +189,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3">
                         <Form.Label className="text-center">
-                          Email 
+                          Email<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="email" placeholder="Enter Email"  name="email" value={form.email} onChange={onChange}/>
                         {errors.email && <p style={{"color": "red"}}>{errors.email}</p>}
@@ -156,7 +198,7 @@ export default function Register() {
                       <Form.Group
                         className="mb-3"                        
                       >
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Password<span style={{"color": "red"}}>*</span></Form.Label>
                         <Form.Control type="password" placeholder="Enter Password"  name="password" value={form.password} onChange={onChange}/>
                         {errors.password && <p style={{"color": "red"}}>{errors.password}</p>}
                       </Form.Group>
@@ -164,14 +206,14 @@ export default function Register() {
                       <Form.Group
                         className="mb-3"                        
                       >
-                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Label>Confirm Password<span style={{"color": "red"}}>*</span></Form.Label>
                         <Form.Control type="password" placeholder="Enter Confirm Password"  name="confirmPassword" value={form.confirmPassword} onChange={onChange}/>
                         {errors.confirmPassword && <p style={{"color": "red"}}>{errors.confirmPassword}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                          Mobile No.
+                          Mobile No.<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Mobile No."  name="mobileno" value={form.mobileno} onChange={onChange}/>
                         {errors.mobileno && <p style={{"color": "red"}}>{errors.mobileno}</p>}
@@ -179,7 +221,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                          Address Line 1
+                          Address Line 1<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Address Line 1"  name="addressline1" value={form.addressline1} onChange={onChange}/>
                         {errors.addressline1 && <p style={{"color": "red"}}>{errors.addressline1}</p>}
@@ -194,7 +236,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                          City
+                          City<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter City"  name="city" value={form.city} onChange={onChange}/>
                         {errors.city && <p style={{"color": "red"}}>{errors.city}</p>}
@@ -202,7 +244,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                        Province
+                        Province<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Province"  name="province" value={form.province} onChange={onChange}/>
                         {errors.province && <p style={{"color": "red"}}>{errors.province}</p>}
@@ -210,7 +252,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                        Country
+                        Country<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Country"  name="country" value={form.country} onChange={onChange}/>
                         {errors.country && <p style={{"color": "red"}}>{errors.country}</p>}
@@ -218,7 +260,7 @@ export default function Register() {
 
                       <Form.Group className="mb-3" >
                         <Form.Label className="text-center">
-                        Postal Code
+                        Postal Code<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Postal Code"  name="pincode" value={form.pincode} onChange={onChange}/>
                         {errors.pincode && <p style={{"color": "red"}}>{errors.pincode}</p>}
@@ -233,6 +275,9 @@ export default function Register() {
                       <p className="mb-0  text-center">
                       Already have an account??{" "}
                       <Link to={"/login"} className="text-primary fw-bold"> Sign In </Link>
+                      </p>
+                      <p className="mb-0  text-center">                     
+                      <Link to={"/"} className="text-primary fw-bold"> Back to Home </Link>
                       </p>
                     </div>
                   </div>

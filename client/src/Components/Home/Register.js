@@ -104,8 +104,7 @@ export default function Register() {
    {
     isValid = false;
     errors["pincode"] = "Please enter pincode"
-   }
-   
+   }   
    setErrors({...errors})
    return isValid;
   }
@@ -135,7 +134,7 @@ export default function Register() {
                           First Name
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter First Name"  name="fname" value={form.fname} onChange={onChange}/>
-                        {errors.fname && errors.fname}
+                        {errors.fname && <p style={{"color": "red"}}>{errors.fname}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -143,7 +142,7 @@ export default function Register() {
                           Last Name
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Last Name"  name="lname" value={form.lname} onChange={onChange}/>
-                        {errors.lname && errors.lname}
+                        {errors.lname && <p style={{"color": "red"}}>{errors.lname}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3">
@@ -151,7 +150,7 @@ export default function Register() {
                           Email 
                         </Form.Label>
                         <Form.Control type="email" placeholder="Enter Email"  name="email" value={form.email} onChange={onChange}/>
-                        {errors.email && errors.email}
+                        {errors.email && <p style={{"color": "red"}}>{errors.email}</p>}
                       </Form.Group>
 
                       <Form.Group
@@ -159,7 +158,7 @@ export default function Register() {
                       >
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter Password"  name="password" value={form.password} onChange={onChange}/>
-                        {errors.password && errors.password}
+                        {errors.password && <p style={{"color": "red"}}>{errors.password}</p>}
                       </Form.Group>
 
                       <Form.Group
@@ -167,7 +166,7 @@ export default function Register() {
                       >
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control type="password" placeholder="Enter Confirm Password"  name="confirmPassword" value={form.confirmPassword} onChange={onChange}/>
-                        {errors.confirmPassword && errors.confirmPassword}
+                        {errors.confirmPassword && <p style={{"color": "red"}}>{errors.confirmPassword}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -175,7 +174,7 @@ export default function Register() {
                           Mobile No.
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Mobile No."  name="mobileno" value={form.mobileno} onChange={onChange}/>
-                        {errors.mobileno && errors.mobileno}
+                        {errors.mobileno && <p style={{"color": "red"}}>{errors.mobileno}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -183,7 +182,7 @@ export default function Register() {
                           Address Line 1
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Address Line 1"  name="addressline1" value={form.addressline1} onChange={onChange}/>
-                        {errors.addressline1 && errors.addressline1}
+                        {errors.addressline1 && <p style={{"color": "red"}}>{errors.addressline1}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -198,7 +197,7 @@ export default function Register() {
                           City
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter City"  name="city" value={form.city} onChange={onChange}/>
-                        {errors.city && errors.city}
+                        {errors.city && <p style={{"color": "red"}}>{errors.city}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -206,7 +205,7 @@ export default function Register() {
                         Province
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Province"  name="province" value={form.province} onChange={onChange}/>
-                        {errors.province && errors.province}
+                        {errors.province && <p style={{"color": "red"}}>{errors.province}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -214,7 +213,7 @@ export default function Register() {
                         Country
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Country"  name="country" value={form.country} onChange={onChange}/>
-                        {errors.country && errors.country}
+                        {errors.country && <p style={{"color": "red"}}>{errors.country}</p>}
                       </Form.Group>
 
                       <Form.Group className="mb-3" >
@@ -222,7 +221,7 @@ export default function Register() {
                         Postal Code
                         </Form.Label>
                         <Form.Control type="text" placeholder="Enter Postal Code"  name="pincode" value={form.pincode} onChange={onChange}/>
-                        {errors.pincode && errors.pincode}
+                        {errors.pincode && <p style={{"color": "red"}}>{errors.pincode}</p>}
                       </Form.Group>                   
                       <div className="d-grid">
                         <Button variant="primary" type="submit" onClick={handleSubmit}>

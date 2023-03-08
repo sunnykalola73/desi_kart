@@ -7,6 +7,8 @@ import cors from "cors";
 
 /* Local imports */
 import { userRouter } from "./routes/user";
+import { categoryRouter } from "./routes/category"
+import { productRouter } from "./routes/product"
 
 const app = express();
 app.use(express.json());
@@ -38,7 +40,9 @@ dotenv.config({ path: ENV_FILE });
 //     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 // });
 
-app.use(userRouter);
+app.use('/auth',userRouter);
+app.use('/categories',categoryRouter);
+app.use('/products',productRouter)
 
 module.exports = app
 

@@ -7,98 +7,73 @@ import logo from "./../../Images/logo.png"
 export const Header = () => {
     const navigate = useNavigate();
     const handleLogout = (e) => {
-        e.preventDefault();    
+        e.preventDefault();
         let userData = JSON.parse(localStorage.getItem("userData"));
         let config = {
-          headers: {
-            'Authorization': 'Bearer ' + userData.token
-          }
+            headers: {
+                'Authorization': 'Bearer ' + userData.token
+            }
         }
         axios
             .post("http://localhost:3001/auth/logout", null, config)
-            .then((response) => {   
-              console.log(response);
-                if(response.status === 200)
-                {                  
-                  NotificationManager.success('You have logged out successfully!');          
-                  localStorage.removeItem("userData");               
-                  navigate("/");
-                }     
+            .then((response) => {
+                console.log(response);
+                if (response.status === 200) {
+                    NotificationManager.success('You have logged out successfully!');
+                    localStorage.removeItem("userData");
+                    navigate("/");
+                }
             })
-            .catch((emsg) => {                            
-              NotificationManager.error(emsg.response.data); 
+            .catch((emsg) => {
+                NotificationManager.error(emsg.response.data);
             })
-      }
+    }
 
-    return (    
-          <Row>
-          <Col>
-            {/* <nav className="navbar navbar-expand-lg navbar-light bg-faded">
-              <a className="navbar-brand" href="/"><img className="img-fluid" height="10" thumbnail={true} src={logo} alt="DesiKart"/></a>
-              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="/">Home</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/products">Products</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/cart">Cart</a>
-                  </li>
-                  {localStorage.getItem("userData") ? 
-                  <li className="nav-item">
-                    <a className="nav-link" href="/" onClick={handleLogout}>Logout</a>
-                  </li> : 
-                  <><li className="nav-item">
-                    <a className="nav-link" href="/register">Register</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/login">Login</a>
-                  </li></>}
-                
-                </ul>
-              </div>
-            </nav> */}
-             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-             <div class="container-fluid">
-            <a href="/" class="navbar-brand">
-                <img src={logo} height="40" alt="DesiKart"/>
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              
-                <form class="d-flex input-group ms-auto" style={{width: "900px"}}>
-                    <input
-                        type="search"
-                        class="form-control"
-                        placeholder="Search"
-                        aria-label="Search"
-                        aria-describedby="search-addon"
-                    />
-                    <span class="input-group-text border-0 bg-transparent" id="search-addon">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </form>
-                <div class="navbar-nav ms-auto">
-                    <span class="input-group-text border-0 bg-transparent" id="search-addon">
-                        <i class="far fa-heart"></i>
-                    </span>
-                    <span class="input-group-text border-0 bg-transparent" id="search-addon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </span>                    
-                    <a href="/login" class="nav-item nav-link">Login</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-          </Col>
+    return (
+        <Row>
+            <Col>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a href="/" class="navbar-brand">
+                            <img src={logo} height="70" alt="DesiKart" />
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <form class="d-flex input-group ms-auto" style={{ width: "80%", marginLeft: "2%!important" }}>
+                                <input
+                                      type="search"
+                                    class="form-control"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    aria-describedby="search-addon"
+                                    style={{ borderColor: "#ED6523" }}
+                                />
+                                <span class="input-group-text border-0 bg-transparent" id="search-addon" style={{ borderColor: "#ED6523" }}>
+                                    <i style={{ color: "#ED6523" }} class="fas fa-search"></i>
+                                </span>
+                            </form>
+                            <div class="navbar-nav ms-auto">
+                                <span class="input-group-text border-0 bg-transparent" id="search-addon">
+                                    <i style={{ color: "#ED6523" }} class="far fa-heart"></i>
+                                </span>
+                                <span class="input-group-text border-0 bg-transparent" id="search-addon">
+                                    <i style={{ color: "#ED6523" }} class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="input-group-text border-0 bg-transparent" id="search-addon">
+                                {localStorage.getItem("userData") ?
+                                    <a style={{ color: "#ED6523" }} href="/" class="nav-item nav-link" onClick={handleLogout}>Logout</a> :
+                                    <a style={{ color: "#ED6523" }} href="/login" class="nav-item nav-link">Login</a>
+                                }
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </Col>
         </Row>
     );
-        
-    }
+
+}

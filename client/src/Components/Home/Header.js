@@ -2,7 +2,7 @@ import { Row, Col, Image } from 'react-bootstrap';
 import { NotificationManager } from 'react-notifications';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import logo from "./../../Images/logo.png"
+import logo from "./../../Images/logo.svg"
 
 export const Header = () => {
     const navigate = useNavigate();

@@ -31,18 +31,20 @@ export const CategoryList = () => {
     }, [])
 
     return (
-        <Row>
+        <Row >
           {categories && categories.map((category) => {
             return (     
-            <Col md={4} key={category._id}>
+            <Col md={2} key={category._id}>
               <div className="card">
                 <Image src={category.image} rounded className="card-img-top" alt="..." />
                 <div className="card-body">
                   <h5 className="card-title">{category.title}</h5>
                   {/* <p className="card-text">Product Description</p> */}
-                  <Button variant="primary" onClick={() => navigate(`collections/${category._id}`)}>View Products</Button>
+                  <Button variant="warning" onClick={() => navigate(`collections/${category._id}`)}>View Products</Button>
                 </div>
+                
               </div>
+              <br></br>
             </Col>);
           })}     
        

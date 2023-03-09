@@ -63,7 +63,7 @@ export const Header = () => {
                 </ul>
               </div>
             </nav> */}
-             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
              <div class="container-fluid">
             <a href="/" class="navbar-brand">
                 <img src={logo} height="40" alt="DesiKart"/>
@@ -73,7 +73,7 @@ export const Header = () => {
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               
-                <form class="d-flex input-group w-auto">
+                <form class="d-flex input-group ms-auto" style={{width: "900px"}}>
                     <input
                         type="search"
                         class="form-control"
@@ -81,15 +81,15 @@ export const Header = () => {
                         aria-label="Search"
                         aria-describedby="search-addon"
                     />
-                    <span class="input-group-text border-0" id="search-addon">
+                    <span class="input-group-text border-0 bg-transparent" id="search-addon">
                         <i class="fas fa-search"></i>
                     </span>
                 </form>
                 <div class="navbar-nav ms-auto">
-                    <span class="input-group-text border-0" id="search-addon">
+                    <span class="input-group-text border-0 bg-transparent" id="search-addon">
                         <i class="far fa-heart"></i>
                     </span>
-                    <span class="input-group-text border-0" id="search-addon">
+                    <span class="input-group-text border-0 bg-transparent" id="search-addon">
                         <i class="fas fa-shopping-cart"></i>
                     </span>                    
                     <a href="/login" class="nav-item nav-link">Login</a>

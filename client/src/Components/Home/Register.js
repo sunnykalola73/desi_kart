@@ -159,11 +159,22 @@ export default function Register() {
   }
 
   return (
-    <div>
+    <div >
+      <img src="https://img.freepik.com/free-vector/food-pattern-design_1284-566.jpg?w=740&t=st=1678322255~exp=1678322855~hmac=146158e1332d6f437ffe9524fc83a827e05fdb56017635261dd8c86741e5e663" 
+      alt="background" className="bg-img"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        zIndex: -1
+      }} />
       <Container fluid>        
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={8} lg={6} xs={12}>
-          <div className="border border-2 border-primary"></div>
+          <div className="border border-2 border-warning"></div>
             <Card className="shadow px-4">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
@@ -266,7 +277,7 @@ export default function Register() {
                         {errors.pincode && <p style={{"color": "red"}}>{errors.pincode}</p>}
                       </Form.Group>                   
                       <div className="d-grid">
-                        <Button variant="primary" type="submit" onClick={handleSubmit}>
+                        <Button variant="primary" type="submit" onClick={handleSubmit} style={{backgroundColor: "#ed9102"}}>
                           Create Account
                         </Button>
                       </div>
@@ -274,10 +285,10 @@ export default function Register() {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                       Already have an account??{" "}
-                      <Link to={"/login"} className="text-primary fw-bold"> Sign In </Link>
+                      <Link to={"/login"} className="text-warning fw-bold"> Sign In </Link>
                       </p>
                       <p className="mb-0  text-center">                     
-                      <Link to={"/"} className="text-primary fw-bold"> Back to Home </Link>
+                      <Link to={"/"} className="text-warning fw-bold"> Back to Home </Link>
                       </p>
                     </div>
                   </div>

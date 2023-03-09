@@ -74,6 +74,57 @@ describe("User unit test cases", () => {
       .expect(400);
   });
 
+  test("Loged in user should get profile", async () => {
+    const user = await User.find({ email: "test@gmail.com" });
+    await request(app)
+      .get("/auth/profile")
+      .set("Authorization", `Bearer ${user[0].tokens[0].token}`)
+      .send()
+      .expect(200);
+  });
+
+  test("Loged in user should update profile", async () => {
+    const user = await User.find({ email: "test@gmail.com" });
+    await request(app)
+      .patch("/auth/profile")
+      .set("Authorization", `Bearer ${user[0].tokens[0].token}`)
+      .send({
+        fname: "Test",
+        lname: "Test1",
+        mobileno: 1212121212,
+        addressline1: "UAAA",
+        addressline2: "UXYZ Street",
+        city: "UWaterloo",
+        province: "UOntario",
+        country: "UCanada",
+        pincode: "UPPP PPP"
+      })
+      .expect(200);
+  });
+
+  test("Loged in user should not update profile", async () => {
+    const user = await User.find({ email: "test@gmail.com" });
+    await request(app)
+      .patch("/auth/profile")
+      .set("Authorization", `Bearer ${user[0].tokens[0].token}`)
+      .send({
+        otp:"122"
+      })
+      .expect(400);
+  });
+
+
+  test("Unauthorized user should not get profile", async () => {
+    const user = await User.find({ email: "test@gmail.com" });
+    await request(app)
+      .get("/auth/profile")
+      .set("Authorization", 'Bearer faketoken')
+      .send()
+      .expect(401);
+  });
+
+
+
   test("User should logout", async () => {
     const user = await User.find({ email: "test@gmail.com" });
     const response = await request(app)
@@ -96,4 +147,4 @@ describe("User unit test cases", () => {
     mongoose.connection.close();
     done();
   });
-});
+},30000);

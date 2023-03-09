@@ -3,6 +3,7 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { CategoryList } from './CategoryList';
 import { Footer } from './Footer';
 import { Header } from './Header';
+import banner from '../../Images/image2.png'
 
 
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
             <div className="jumbotron">
               <Image src="https://cdn.shopify.com/s/files/1/0524/1874/0389/files/Allthingsdesi_8a26573f-b748-435f-a239-559b22ea1241_1600x.gif?v=1646847947" className="card-img-top" />
               
-              <Image src="https://cdn.shopify.com/s/files/1/0524/1874/0389/files/March-Banner_b842ca4c-03dd-445a-889d-0d3e10f3841a_1400x.jpg?v=1677635268" className="card-img-top" />
+              <Image src={banner} className="card-img-top mb-3" />
              
             </div>
           </Col>

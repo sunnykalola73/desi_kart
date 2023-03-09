@@ -39,10 +39,10 @@ export const ProductList = () => {
                     return (
                         <Col md={4} key={product._id}>
                             <div className="card">
-                                <Image src={product.image} rounded className="card-img-top" alt="..." />
+                                <Image src={product.image} style={{height: "300px", width: "350px", margin:"5%"}} rounded className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{product.pname}</h5>
-                                    <p className="card-text">{product.description}</p>
+                                    {/* <p className="card-text">{product.description}</p> */}
                                     $<span className="card-text">{product.price}</span>
                                     <p><RatingStar id="123" rating={product.rating} /></p>
                                 </div>

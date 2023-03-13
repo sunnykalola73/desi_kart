@@ -1,32 +1,44 @@
 import mongoose from "mongoose";
+import Product from "../model/product";
 
 const orderSchema = new mongoose.Schema(
   {
-    orderID: {
+    userID: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true
+      required: true,
     },
     products: [
       {
-      type: mongoose.Schema.Types.ObjectId,
-      ref:'Product',
-      required:true
-      }
+        productID:{ 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Product', 
+        required: true 
+        },
+        quantity: {
+        type: Number,
+        required: true
+        },
+        price:{
+          type:Number,
+          required:true
+        }
+    }
     ],
-    quantity: {
+    totalamount: {
       type: Number,
       required: true
     },
-    amount: {
-      type: Number,
-      required: true
-    }
+    orderStatus: {
+      type: String,
+      enum: ["placed", "received", "readytopickup"],
+      default: "placed",
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Order = mongoose.model("Order", productSchema);
+const Order = mongoose.model("Order", orderSchema);
 
 module.exports = Order;

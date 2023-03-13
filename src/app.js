@@ -9,6 +9,7 @@ import cors from "cors";
 import { userRouter } from "./routes/user";
 import { categoryRouter } from "./routes/category";
 import { productRouter } from "./routes/product";
+import { orderRouter } from "./routes/order";
 
 const app = express();
 app.use(express.json());
@@ -43,5 +44,6 @@ dotenv.config({ path: ENV_FILE });
 app.use("/auth", userRouter);
 app.use("/categories", categoryRouter);
 app.use("/products", productRouter);
+app.use("/order", orderRouter);
 
 module.exports = app;

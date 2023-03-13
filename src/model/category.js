@@ -17,6 +17,7 @@ const categorySchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    timestamps2: 2,
   }
 );
 

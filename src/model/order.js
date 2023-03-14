@@ -33,7 +33,11 @@ const orderSchema = new mongoose.Schema(
       enum: ["placed", "received", "readytopickup"],
       default: "placed",
     },
-  },
+    transaction_ID: {
+      type:String,
+      required:true
+    }
+    },
   {
     timestamps: true,
   }

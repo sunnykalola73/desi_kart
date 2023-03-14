@@ -1,16 +1,23 @@
 import express from "express";
 import Order from "../model/order";
 import auth from "../middleware/auth";
+import stripHandler from "../middleware/striphandle";
 
 export const orderRouter = express.Router();
 
-orderRouter.post("/place-order", auth, async (req, res) => {
+orderRouter.post("/place-order", auth, stripHandler, async (req, res) => {
   try {
-    const order = new Order(req.body);
-    order.userID = req.user._id;
+    if(req.createCharges.status == "succeeded"){
+      const order = new Order(req.body);
+      order.userID = req.user._id;
+      order.transaction_ID = req.createCharges.balance_transaction;
 
-    await order.save();
-    res.status(201).send(order);
+      await order.save();
+      res.status(201).send(order);
+    }
+    else{
+      res.status(400).send("Opps! Transaction Failed!")
+    }
   } catch (error) {
     res.status(400).send(error.message);
   }

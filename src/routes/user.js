@@ -1,13 +1,18 @@
 import express from "express";
 import User from "../model/user";
 import auth from "../middleware/auth";
+import { sendWelcomeEmail } from "../emails/account";
 export const userRouter = express.Router();
 
 userRouter.post("/signup", async (req, res) => {
   const user = new User(req.body);
-
   try {
+    const existUser = await User.findOne({ email: user.email });
+    if (existUser) {
+      throw new Error("Oops! Email already exist!");
+    }
     await user.save();
+    //sendWelcomeEmail(user.email,user.fname,user.lname)
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (error) {
@@ -18,9 +23,10 @@ userRouter.post("/signup", async (req, res) => {
 userRouter.post("/login", async (req, res) => {
   try {
     const user = await User.findByCredentials(
-    req.body.email,
-    req.body.password
+      req.body.email,
+      req.body.password
     );
+
     const token = await user.generateAuthToken();
     res.status(200).send({ user, token });
   } catch (error) {
@@ -50,7 +56,17 @@ userRouter.get("/profile", auth, async (req, res) => {
 
 userRouter.patch("/profile", auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdate = ["fname", "lname", "mobileno", "addressline1", "addressline2", "city", "province","country","pincode"];
+  const allowedUpdate = [
+    "fname",
+    "lname",
+    "mobileno",
+    "addressline1",
+    "addressline2",
+    "city",
+    "province",
+    "country",
+    "pincode",
+  ];
   const isValidaUpdate = updates.every((update) => {
     return allowedUpdate.includes(update);
   });

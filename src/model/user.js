@@ -33,26 +33,26 @@ const userSchema = new mongoose.Schema(
     addressline1: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     addressline2: {
-        type: String,
-        trim: true,
+      type: String,
+      trim: true,
     },
     city: {
-        type: String,
-        required: true,
-        trim: true
+      type: String,
+      required: true,
+      trim: true,
     },
-    province:{
-        type: String,
-        required: true,
-        trim: true
+    province: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    country:{
-        type: String,
-        required: true,
-        trim: true
+    country: {
+      type: String,
+      required: true,
+      trim: true,
     },
     pincode: {
       type: String,
@@ -75,7 +75,7 @@ const userSchema = new mongoose.Schema(
 userSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
-  
+
   delete userObject.password;
   delete userObject.tokens;
   delete userObject.createdAt;
@@ -113,7 +113,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
 //Hash plain text password before saving
 userSchema.pre("save", async function (next) {
   const user = this;
-  
+
   if (user.isModified("password")) {
     user.password = await bcrypt.hash(user.password, 8);
   }

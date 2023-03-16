@@ -7,21 +7,21 @@ import cors from "cors";
 
 /* Local imports */
 import { userRouter } from "./routes/user";
-import { categoryRouter } from "./routes/category"
-import { productRouter } from "./routes/product"
+import { categoryRouter } from "./routes/category";
+import { productRouter } from "./routes/product";
 
 const app = express();
 app.use(express.json());
 // for encoding the URL
 app.use(
-	express.urlencoded({
-		extended: true,
-	})
+  express.urlencoded({
+    extended: true,
+  })
 );
 app.use(
-	bodyParser.urlencoded({
-		extended: true,
-	})
+  bodyParser.urlencoded({
+    extended: true,
+  })
 );
 
 app.use(cors());
@@ -40,10 +40,8 @@ dotenv.config({ path: ENV_FILE });
 //     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 // });
 
-app.use('/auth',userRouter);
-app.use('/categories',categoryRouter);
-app.use('/products',productRouter)
+app.use("/auth", userRouter);
+app.use("/categories", categoryRouter);
+app.use("/products", productRouter);
 
-module.exports = app
-
-
+module.exports = app;

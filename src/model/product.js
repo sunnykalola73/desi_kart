@@ -7,31 +7,30 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
     categoryID: {
-        type: mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:'Category'
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Category",
     },
     description: {
       type: String,
       trim: true,
     },
     image: {
-      type: String
+      type: String,
     },
-    price:{
-        type:Number,
-        required:true
+    price: {
+      type: Number,
+      required: true,
     },
-    rating:{
-        type:Number,
-        required:true
-    }
+    rating: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 const Product = mongoose.model("Product", productSchema);
 

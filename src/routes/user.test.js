@@ -74,7 +74,6 @@ describe("User unit test cases", () => {
       .expect(400);
   });
 
-  
   test("User should logout", async () => {
     const user = await User.find({ email: "test@gmail.com" });
     const response = await request(app)
@@ -83,16 +82,15 @@ describe("User unit test cases", () => {
       .send()
       .expect(200);
   });
-  
+
   test("User shouldnot logout without login", async () => {
     mongoose.connection.close();
     const response = await request(app)
       .post("/auth/logout")
-      .set("Authorization", 'Bearer faketoken')
+      .set("Authorization", "Bearer faketoken")
       .send()
       .expect(401);
   });
-
 
   afterAll((done) => {
     mongoose.connection.close();

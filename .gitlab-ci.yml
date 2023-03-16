@@ -33,9 +33,9 @@ test:
   artifacts:
     when: always 
 
-coverage:
+test-coverage:
   stage: test
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  # coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
   dependencies:
     - test
   script:

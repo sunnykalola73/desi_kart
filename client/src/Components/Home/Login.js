@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Col, Button, Row, Container, Card, Form, Image } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { NotificationManager } from 'react-notifications';
+import { Header } from './Header';
+import logo from "./../../Images/logo.png";
+import "./Login.css";
 
 export default function Login() {
   const [form, setForm] = useState({ 
@@ -10,6 +15,7 @@ export default function Login() {
   });
   const [errors, setErrors] = useState({});
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const onChange = e => {
     const nextFormState = {
@@ -51,12 +57,16 @@ export default function Login() {
     if(validateForm())
     {
         axios
-        .post("http://localhost:3001/login", form)
+        .post("http://localhost:3001/auth/login", form)
         .then((response) => {           
             if(response.status === 200)
             {
-                clearForm();     
-                localStorage.setItem("userData", JSON.stringify(response.data));           
+                clearForm();    
+                NotificationManager.success('You have logged in successfully!'); 
+                localStorage.setItem("userData", JSON.stringify(response.data)); 
+                setErrors({});
+                setError("");  
+                navigate("/");
             }     
         })
         .catch((emsg) => {
@@ -67,20 +77,31 @@ export default function Login() {
 
   return (
     <div>
-      <Container>
+      <Container fluid 
+      style={{
+        backgroundImage:
+          'url(https://img.freepik.com/free-vector/food-pattern-design_1284-566.jpg?w=740&t=st=1678322255~exp=1678322855~hmac=146158e1332d6f437ffe9524fc83a827e05fdb56017635261dd8c86741e5e663)',
+        height: window.innerHeight,
+        // width: '1000px',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        // opacity:0.8
+      }}
+      >    
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={8} lg={6} xs={12}>
-          <div className="border border-2 border-primary"></div>
+          <div className="border border-2 border-warning" ></div>
             <Card className="shadow px-4">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-center text-uppercase ">Logo</h2>
+                  <Image className="img-fluid" src={logo}/>
                   <div className="mb-3">
                     <Form>    
                         {error && <p style={{"color": "red"}}>{error}</p>}                  
                       <Form.Group className="mb-3">
                         <Form.Label className="text-center">
-                          Email 
+                          Email<span style={{"color": "red"}}>*</span>
                         </Form.Label>
                         <Form.Control type="email" placeholder="Enter Email"  name="email" value={form.email} onChange={onChange}/>
                         {errors.email && <p style={{"color": "red"}}>{errors.email}</p>}
@@ -89,12 +110,13 @@ export default function Login() {
                       <Form.Group
                         className="mb-3"                        
                       >
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Password<span style={{"color": "red"}}>*</span></Form.Label>
                         <Form.Control type="password" placeholder="Enter Password"  name="password" value={form.password} onChange={onChange}/>
                         {errors.password && <p style={{"color": "red"}}>{errors.password}</p>}
                       </Form.Group>
                       <div className="d-grid">
-                        <Button variant="primary" type="submit" onClick={handleSubmit}>
+                        {/* <Button variant="primary" type="submit" onClick={handleSubmit} style={{backgroundColor: "#ec6520"}}> */}
+                        <Button variant="primary" type="submit" onClick={handleSubmit} style={{backgroundColor: "#ed9102"}}>
                           Login
                         </Button>
                       </div>
@@ -102,10 +124,10 @@ export default function Login() {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                       Don't have account??{" "}
-                      <Link to={"/register"} className="text-primary fw-bold"> Sign Up </Link>
-                        {/* <a href="{''}" className="text-primary fw-bold">
-                          Sign In
-                        </a> */}
+                      <Link to={"/register"} className="text-warning fw-bold" > Sign Up </Link>                      
+                      </p>
+                      <p className="mb-0  text-center">                     
+                      <Link to={"/"} className="text-warning fw-bold"> Back to Home </Link>
                       </p>
                     </div>
                   </div>

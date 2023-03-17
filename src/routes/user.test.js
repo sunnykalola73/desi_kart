@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 require("../db/mongoose");
 import User from "../model/user";
 
-describe("User unit test cases", () => {
+describe("Unit test cases for User", () => {
   beforeAll(async () => {
     await User.deleteOne({
       fname: "Test",
@@ -13,7 +13,7 @@ describe("User unit test cases", () => {
     });
   });
 
-  test("Should sign up New User!", async () => {
+  test("Test 1: New User sign-up", async () => {
     const response = await request(app)
       .post("/auth/signup")
       .send({
@@ -35,7 +35,7 @@ describe("User unit test cases", () => {
     expect(user).not.toBeNull();
   });
 
-  test("Try to add already exist User!", async () => {
+  test("Test 2: Sign-up not allowed for existing user", async () => {
     const response = await request(app)
       .post("/auth/signup")
       .send({
@@ -54,7 +54,7 @@ describe("User unit test cases", () => {
       .expect(400);
   });
 
-  test("User should login", async () => {
+  test("Test 3: User should login", async () => {
     const response = await request(app)
       .post("/auth/login")
       .send({
@@ -64,7 +64,7 @@ describe("User unit test cases", () => {
       .expect(200);
   });
 
-  test("User should not login for wrong credentials", async () => {
+  test("Test 4: Login not allowed for incorrect credentials", async () => {
     const response = await request(app)
       .post("/auth/login")
       .send({
@@ -74,7 +74,7 @@ describe("User unit test cases", () => {
       .expect(400);
   });
 
-  test("User should logout", async () => {
+  test("Test 5: Logout functionality", async () => {
     const user = await User.find({ email: "test@gmail.com" });
     const response = await request(app)
       .post("/auth/logout")
@@ -83,7 +83,7 @@ describe("User unit test cases", () => {
       .expect(200);
   });
 
-  test("User shouldnot logout without login", async () => {
+  test("Test 6: User should not logout without login", async () => {
     mongoose.connection.close();
     const response = await request(app)
       .post("/auth/logout")

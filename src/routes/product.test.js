@@ -18,4 +18,9 @@ describe("Unit test cases for Product", () => {
       .send()
       .expect(400);
   });
-}, 300);
+
+  afterAll((done) => {
+    mongoose.connection.close();
+    done();
+  });
+});

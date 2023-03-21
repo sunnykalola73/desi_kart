@@ -4,7 +4,7 @@
 	"description": "E-commerce website for the Indian store",
 	"main": "index.js",
 	"scripts": {
-		"test": "env-cmd -f ./.env jest --runInBand",
+		"test": "env-cmd -f ./.env jest --runInBand --detectOpenHandles",
 		"test-coverage": "env-cmd -f ./.env jest --coverage --runInBand",
 		"build": "npm install && cd client && npm install && npm run build",
 		"start": "babel-node src/index.js",

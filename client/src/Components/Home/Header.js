@@ -80,10 +80,12 @@ export const Header = () => {
                   class="input-group-text border-0 bg-transparent"
                   id="search-addon"
                 >
-                  <i
-                    style={{ color: "#ED6523" }}
-                    class="fas fa-shopping-cart"
-                  ></i>
+                  <a href="/Cart">
+                    <i
+                      style={{ color: "#ED6523" }}
+                      class="fas fa-shopping-cart"
+                    ></i>
+                  </a>
                 </span>
                 <span
                   class="input-group-text border-0 bg-transparent"

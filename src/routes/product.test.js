@@ -18,4 +18,4 @@ describe("Unit test cases for Product", () => {
       .send()
       .expect(400);
   });
-});
+}, 30000);

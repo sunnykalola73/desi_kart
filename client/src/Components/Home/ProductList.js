@@ -1,17 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Col, Image, Row } from "react-bootstrap";
+import {  Col, Image, Row } from "react-bootstrap";
 import { NotificationManager } from "react-notifications";
 import { RatingStar } from "rating-star";
-import { useNavigate, useParams } from "react-router-dom";
+import {  Link, useNavigate, useParams } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
 export const ProductList = () => {
     const [products, setProducts] = useState();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const { id } = useParams();
-    console.log("id", id);
+  
 
     const getProducts = () => {
         axios
@@ -31,14 +31,16 @@ export const ProductList = () => {
     useEffect(() => {
         getProducts();
     }, [])
+
+   
     return (
         <>
         <Header />
             <Row>
                 {products && products.map((product) => {
-                    return (
+                    return ( 
                         <Col md={4} key={product._id}>
-                            <div className="card">
+                            <Link className="card" to={`/description/${product._id}`} style={{cursor: "pointer"}}>
                                 <Image src={product.image} style={{height: "300px", width: "350px", margin:"5%"}} rounded className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{product.pname}</h5>
@@ -46,7 +48,7 @@ export const ProductList = () => {
                                     $<span className="card-text">{product.price}</span>
                                     <p><RatingStar id="123" rating={product.rating} /></p>
                                 </div>
-                            </div>
+                            </Link>
                         </Col>);
                 })}
 

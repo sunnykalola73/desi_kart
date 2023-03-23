@@ -96,4 +96,4 @@ describe("Unit test cases for User", () => {
     mongoose.connection.close();
     done();
   });
-}, 30000);
+});

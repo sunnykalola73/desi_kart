@@ -6,7 +6,15 @@
         "commonjs": true,
         "jest/global": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "standard",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "react"
+    ],
     "rules": {
         // "indent": [  // To be updated accoring to the rules want to set-up not necessary to have all
         //     "error",

@@ -12,20 +12,19 @@ const categorySchema = new mongoose.Schema(
       trim: true,
     },
     image: {
-      type: String
-    }
+      type: String,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-categorySchema.virtual('products',{
-    ref:'Product',
-    localField:'_id',
-    foreignField:'categoryID'
-})
-
+categorySchema.virtual("products", {
+  ref: "Product",
+  localField: "_id",
+  foreignField: "categoryID",
+});
 
 const Category = mongoose.model("Category", categorySchema);
 

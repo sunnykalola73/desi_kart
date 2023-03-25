@@ -14,7 +14,6 @@ const App = () => {
   return (
     <Router>
       <Routes>
-<<<<<<< HEAD
           <Route path="/" element={<Home />} />       
           <Route path="/products" element={<Products />} />  
           <Route path="/register" element={<Register />} />  
@@ -22,14 +21,6 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />         
           <Route path="/collections/:id" element={<ProductList />} />  
           <Route path="/description/:id" element={<ProductDescription />} />   
-=======
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/collections/:id" element={<ProductList />} />
->>>>>>> 23600e855e180a82906190e196cd3ca1b8a8f43a
       </Routes>
       <NotificationContainer />
     </Router>

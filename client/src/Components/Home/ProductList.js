@@ -8,17 +8,10 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 
 export const ProductList = () => {
-<<<<<<< HEAD
     const [products, setProducts] = useState();
     const navigate = useNavigate();
     const { id } = useParams();
   
-=======
-  const [products, setProducts] = useState();
-  // const navigate = useNavigate();
-  const { id } = useParams();
-  console.log("id", id);
->>>>>>> 23600e855e180a82906190e196cd3ca1b8a8f43a
 
   const getProducts = () => {
     axios
@@ -35,7 +28,6 @@ export const ProductList = () => {
       });
   };
 
-<<<<<<< HEAD
     useEffect(() => {
         getProducts();
     }, [])
@@ -64,41 +56,3 @@ export const ProductList = () => {
             <Footer/>
         </>)
 }
-=======
-  useEffect(() => {
-    getProducts();
-  }, []);
-  return (
-    <>
-      <Header />
-      <Row>
-        {products &&
-          products.map((product) => {
-            return (
-              <Col md={4} key={product._id}>
-                <div className="card">
-                  <Image
-                    src={product.image}
-                    style={{ height: "300px", width: "350px", margin: "5%" }}
-                    rounded
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{product.pname}</h5>
-                    {/* <p className="card-text">{product.description}</p> */}$
-                    <span className="card-text">{product.price}</span>
-                    <p>
-                      <RatingStar id="123" rating={product.rating} />
-                    </p>
-                  </div>
-                </div>
-              </Col>
-            );
-          })}
-      </Row>
-      <Footer />
-    </>
-  );
-};
->>>>>>> 23600e855e180a82906190e196cd3ca1b8a8f43a

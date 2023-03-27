@@ -1,4 +1,4 @@
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Badge } from "react-bootstrap";
 import { NotificationManager } from "react-notifications";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -84,7 +84,7 @@ export const Header = () => {
                     <i
                       style={{ color: "#ED6523" }}
                       class="fas fa-shopping-cart"
-                    ></i>
+                    >{localStorage.getItem("CartData") && <Badge bg="warning">{JSON.parse(localStorage.getItem("CartData")).length}</Badge>}</i>
                   </a>
                 </span>
                 <span

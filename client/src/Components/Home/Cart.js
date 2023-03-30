@@ -1,13 +1,10 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import React, { useState } from "react";
+import { Image } from "react-bootstrap";
 
 const ShoppingCart = () => {
-  const [cart, setCart] = useState([
-    { id: 1, name: "Product 1", price: 10, count: 1 },
-    { id: 2, name: "Product 2", price: 20, count: 2 },
-    { id: 3, name: "Product 3", price: 30, count: 3 },
-  ]);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("CartData") || []));
 
   const handleIncrement = (product) => {
     const updatedCart = [...cart];
@@ -40,19 +37,19 @@ const ShoppingCart = () => {
       </span>
       <div style={{ display: "flex", alignItems: "flex-start" }}>
         <div style={{ marginRight: "30px" }}>
-          {cart.map((product) => (
+          {cart.length > 0 ? cart.map((product) => (
             <div
-              key={product.id}
+              key={product._id}
               style={{ alignItems: "left", marginLeft: "30px" }}
             >
-              <h2>{product.name}</h2>
-              <img alt="Product image"></img>
+              <h2>{product.pname}</h2>
+              <Image width={75} height={75} src={product.image} alt="Product image"/>
               <p>Price: ${product.price}</p>
               <button onClick={() => handleIncrement(product)}>+</button>
               {product.count}
               <button onClick={() => handleDecrement(product)}>-</button>
             </div>
-          ))}
+          )) : <div>Your cart is empty</div>}
         </div>
         <div style={{ flex: 1 }}>
           <div
@@ -65,8 +62,8 @@ const ShoppingCart = () => {
               verticalAlign: "center",
             }}
           >
-            <h3>Total: {totalPrice}</h3>
-            <button>Proceed to Checkout</button>
+           {cart.length > 0 && <><h3>Total: {totalPrice}</h3>
+            <button>Proceed to Checkout</button></>} 
           </div>
         </div>
       </div>

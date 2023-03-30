@@ -26,6 +26,7 @@ const Home = () => {
           <Col>
             <div className="jumbotron">
               <Image
+                id="all-things-desi-image"
                 src="https://cdn.shopify.com/s/files/1/0524/1874/0389/files/Allthingsdesi_8a26573f-b748-435f-a239-559b22ea1241_1600x.gif?v=1646847947"
                 className="card-img-top"
               />

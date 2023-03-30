@@ -12,7 +12,7 @@ userRouter.post("/signup", async (req, res) => {
       throw new Error("Oops! Email already exist!");
     }
     await user.save();
-    //sendWelcomeEmail(user.email,user.fname,user.lname)
+    // sendWelcomeEmail(user.email,user.fname,user.lname)
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (error) {

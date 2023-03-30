@@ -9,24 +9,24 @@ const orderSchema = new mongoose.Schema(
     },
     products: [
       {
-        productID:{ 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Product', 
-        required: true 
+        productID: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
         },
         quantity: {
-        type: Number,
-        required: true
+          type: Number,
+          required: true,
         },
-        price:{
-          type:Number,
-          required:true
-        }
-    }
+        price: {
+          type: Number,
+          required: true,
+        },
+      },
     ],
     totalamount: {
       type: Number,
-      required: true
+      required: true,
     },
     orderStatus: {
       type: String,
@@ -34,10 +34,10 @@ const orderSchema = new mongoose.Schema(
       default: "placed",
     },
     transaction_ID: {
-      type:String,
-      required:true
-    }
+      type: String,
+      required: true,
     },
+  },
   {
     timestamps: true,
   }

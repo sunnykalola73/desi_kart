@@ -71,7 +71,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-//Only send required data in response
+// Only send required data in response
 userSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
@@ -84,7 +84,7 @@ userSchema.methods.toJSON = function () {
   return userObject;
 };
 
-//authentication token for user
+// authentication token for user
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign(
@@ -97,7 +97,7 @@ userSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
-//User checking in database
+// User checking in database
 userSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) {
@@ -110,7 +110,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
   return user;
 };
 
-//Hash plain text password before saving
+// Hash plain text password before saving
 userSchema.pre("save", async function (next) {
   const user = this;
 

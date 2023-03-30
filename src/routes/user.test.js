@@ -1,8 +1,8 @@
 import request from "supertest";
 import app from "../app";
 import mongoose from "mongoose";
-require("../db/mongoose");
 import User from "../model/user";
+require("../db/mongoose");
 
 describe("Unit test cases for User", () => {
   beforeAll(async () => {

@@ -3,7 +3,6 @@ import app from "../app";
 import mongoose from "mongoose";
 require("../db/mongoose");
 
-
 describe("Unit test cases for Product", () => {
   test("Test 1: Get product by id where id exist", async () => {
     const response = await request(app)

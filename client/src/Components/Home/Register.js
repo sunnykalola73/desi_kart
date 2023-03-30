@@ -159,6 +159,7 @@ export default function Register() {
   return (
     <div>
       <img
+        id="register-background-image"
         src="https://img.freepik.com/free-vector/food-pattern-design_1284-566.jpg?w=740&t=st=1678322255~exp=1678322855~hmac=146158e1332d6f437ffe9524fc83a827e05fdb56017635261dd8c86741e5e663"
         alt="background"
         className="bg-img"
@@ -190,6 +191,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter First Name"
+                          id="firstname"
                           name="fname"
                           value={form.fname}
                           onChange={onChange}
@@ -206,6 +208,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Last Name"
+                          id="lastname"
                           name="lname"
                           value={form.lname}
                           onChange={onChange}
@@ -222,6 +225,7 @@ export default function Register() {
                         <Form.Control
                           type="email"
                           placeholder="Enter Email"
+                          id="emailID"
                           name="email"
                           value={form.email}
                           onChange={onChange}
@@ -239,6 +243,7 @@ export default function Register() {
                           type="password"
                           placeholder="Enter Password"
                           name="password"
+                          id="enter-password"
                           value={form.password}
                           onChange={onChange}
                         />
@@ -255,6 +260,7 @@ export default function Register() {
                         <Form.Control
                           type="password"
                           placeholder="Enter Confirm Password"
+                          id="confirm-password"
                           name="confirmPassword"
                           value={form.confirmPassword}
                           onChange={onChange}
@@ -273,6 +279,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Mobile No."
+                          id="mobile-number"
                           name="mobileno"
                           value={form.mobileno}
                           onChange={onChange}
@@ -289,6 +296,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Address Line 1"
+                          id="address-line1"
                           name="addressline1"
                           value={form.addressline1}
                           onChange={onChange}
@@ -305,6 +313,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Address Line 2"
+                          id="address-line2"
                           name="addressline2"
                           value={form.addressline2}
                           onChange={onChange}
@@ -318,6 +327,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter City"
+                          id="city-name"
                           name="city"
                           value={form.city}
                           onChange={onChange}
@@ -334,6 +344,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Province"
+                          id="province-name"
                           name="province"
                           value={form.province}
                           onChange={onChange}
@@ -350,6 +361,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Country"
+                          id="country-name"
                           name="country"
                           value={form.country}
                           onChange={onChange}
@@ -366,6 +378,7 @@ export default function Register() {
                         <Form.Control
                           type="text"
                           placeholder="Enter Postal Code"
+                          id="postal-code"
                           name="pincode"
                           value={form.pincode}
                           onChange={onChange}
@@ -376,6 +389,7 @@ export default function Register() {
                       </Form.Group>
                       <div className="d-grid">
                         <Button
+                          id="create-account"
                           variant="primary"
                           type="submit"
                           onClick={handleSubmit}

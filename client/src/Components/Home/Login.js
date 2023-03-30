@@ -114,6 +114,7 @@ export default function Login() {
                         <Form.Control
                           type="email"
                           placeholder="Enter Email"
+                          id="login-email"
                           name="email"
                           value={form.email}
                           onChange={onChange}
@@ -130,6 +131,7 @@ export default function Login() {
                         <Form.Control
                           type="password"
                           placeholder="Enter Password"
+                          id="login-password"
                           name="password"
                           value={form.password}
                           onChange={onChange}
@@ -141,6 +143,7 @@ export default function Login() {
                       <div className="d-grid">
                         {/* <Button variant="primary" type="submit" onClick={handleSubmit} style={{backgroundColor: "#ec6520"}}> */}
                         <Button
+                          id="login-button"
                           variant="primary"
                           type="submit"
                           onClick={handleSubmit}

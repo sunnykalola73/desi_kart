@@ -5,7 +5,7 @@ import path from "path";
 import dotenv from "dotenv";
 import cors from "cors";
 
-/* Local imports */
+/* Local imports for routes*/
 import { userRouter } from "./routes/user";
 import { categoryRouter } from "./routes/category";
 import { productRouter } from "./routes/product";

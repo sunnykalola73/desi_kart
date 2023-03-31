@@ -10,6 +10,7 @@ import { userRouter } from "./routes/user";
 import { categoryRouter } from "./routes/category";
 import { productRouter } from "./routes/product";
 import { orderRouter } from "./routes/order";
+import { searchRouter } from "./routes/search";
 
 const app = express();
 app.use(express.json());
@@ -45,5 +46,6 @@ app.use("/auth", userRouter);
 app.use("/categories", categoryRouter);
 app.use("/products", productRouter);
 app.use("/order", orderRouter);
+app.use("/search", searchRouter);
 
 module.exports = app;

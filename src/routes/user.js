@@ -46,40 +46,40 @@ userRouter.post("/logout", auth, async (req, res) => {
   }
 });
 
-userRouter.get("/profile", auth, async (req, res) => {
-  try {
-    res.status(200).send(req.user);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+// userRouter.get("/profile", auth, async (req, res) => {
+//   try {
+//     res.status(200).send(req.user);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// });
 
-userRouter.patch("/profile", auth, async (req, res) => {
-  const updates = Object.keys(req.body);
-  const allowedUpdate = [
-    "fname",
-    "lname",
-    "mobileno",
-    "addressline1",
-    "addressline2",
-    "city",
-    "province",
-    "country",
-    "pincode",
-  ];
-  const isValidaUpdate = updates.every((update) => {
-    return allowedUpdate.includes(update);
-  });
+// userRouter.patch("/profile", auth, async (req, res) => {
+//   const updates = Object.keys(req.body);
+//   const allowedUpdate = [
+//     "fname",
+//     "lname",
+//     "mobileno",
+//     "addressline1",
+//     "addressline2",
+//     "city",
+//     "province",
+//     "country",
+//     "pincode",
+//   ];
+//   const isValidaUpdate = updates.every((update) => {
+//     return allowedUpdate.includes(update);
+//   });
 
-  if (!isValidaUpdate) {
-    return res.status(400).send("Cannot perform update user!");
-  }
-  try {
-    updates.forEach((update) => (req.user[update] = req.body[update]));
+//   if (!isValidaUpdate) {
+//     return res.status(400).send("Cannot perform update user!");
+//   }
+//   try {
+//     updates.forEach((update) => (req.user[update] = req.body[update]));
 
-    await req.user.save();
-    res.send(req.user);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+//     await req.user.save();
+//     res.send(req.user);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// });

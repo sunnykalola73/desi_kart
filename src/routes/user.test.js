@@ -74,23 +74,36 @@ describe("Unit test cases for User", () => {
       .expect(400);
   });
 
-  test("Test 5: Logout functionality", async () => {
+  
+  test("Test 5: User got error in logout process", async () => {
     const user = await User.find({ email: "test@gmail.com" });
+    const originalSave = User.prototype.save;
+    User.prototype.save = jest.fn().mockRejectedValue(new Error('Database error'));
     const response = await request(app)
       .post("/auth/logout")
       .set("Authorization", `Bearer ${user[0].tokens[0].token}`)
       .send()
-      .expect(200);
+      .expect(500);
+    User.prototype.save =originalSave  
   });
+  test("Test 6: Logout functionality", async () => {
+    const user = await User.find({ email: "test@gmail.com" });
+    const response = await request(app)
+    .post("/auth/logout")
+    .set("Authorization", `Bearer ${user[0].tokens[0].token}`)
+    .send()
+    .expect(200);
+  });
+  
 
-  test("Test 6: User should not logout without login", async () => {
-    mongoose.connection.close();
+  test("Test 7: User should not logout without login", async () => {
     const response = await request(app)
       .post("/auth/logout")
       .set("Authorization", "Bearer faketoken")
       .send()
       .expect(401);
   });
+
 
   afterAll((done) => {
     mongoose.connection.close();

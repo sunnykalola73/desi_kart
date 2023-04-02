@@ -156,7 +156,7 @@ export default function Login() {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                         Don't have account??{" "}
-                        <Link to={"/register"} className="text-warning fw-bold">
+                        <Link to={"/register"} className="text-warning fw-bold" id="signup">
                           {" "}
                           Sign Up{" "}
                         </Link>

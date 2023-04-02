@@ -6,7 +6,7 @@ export const Footer = () => {
     <Row>
       <Col>
         <footer className="bg-dark text-white text-center py-3">
-          <img src={logo} height="200"></img>
+          <img id="Logo" src={logo} height="200"></img>
           <p>Desikart &copy; 2023</p>
         </footer>
       </Col>

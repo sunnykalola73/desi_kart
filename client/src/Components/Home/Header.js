@@ -95,6 +95,7 @@ export const Header = () => {
                     <a
                       style={{ color: "#ED6523" }}
                       href="/"
+                      id="logout-link"
                       class="nav-item nav-link"
                       onClick={handleLogout}
                     >
@@ -104,6 +105,7 @@ export const Header = () => {
                     <a
                       style={{ color: "#ED6523" }}
                       href="/login"
+                      id="login-link"
                       class="nav-item nav-link"
                     >
                       Login

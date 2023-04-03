@@ -73,7 +73,12 @@ export default function Login() {
             localStorage.setItem("userData", JSON.stringify(response.data));
             setErrors({});
             setError("");
-            navigate("/");
+            if (localStorage.getItem("fromCart")) {
+              navigate("/cart");
+            } else {
+              navigate("/");
+            }
+            localStorage.removeItem("fromCart");
           }
         })
         .catch((emsg) => {
@@ -156,7 +161,7 @@ export default function Login() {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                         Don't have account??{" "}
-                        <Link to={"/register"} className="text-warning fw-bold" id="signup">
+                        <Link to={"/register"} className="text-warning fw-bold">
                           {" "}
                           Sign Up{" "}
                         </Link>

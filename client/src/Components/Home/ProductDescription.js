@@ -18,7 +18,6 @@ const ProductDescriptionPage = () => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          console.log("..", response.data[0])
           setProduct(response.data[0]);
         }
       })
@@ -56,7 +55,7 @@ const ProductDescriptionPage = () => {
   }
   return (
     <>  <Header />
-      <Container>
+      <Container className='mb-5 mt-3'>
         <Row mb={1}>
           <Col md={6}>
             <Image src={product.image} alt={product.name} fluid />

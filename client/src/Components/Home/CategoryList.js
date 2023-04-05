@@ -46,7 +46,7 @@ export const CategoryList = () => {
                     alt="..."
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{category.title}</h5>
+                    <h5 className="card-title text-center">{category.cname}</h5>
                     {/* <p className="card-text">Product Description</p> */}
                     <Button
                       variant="warning"

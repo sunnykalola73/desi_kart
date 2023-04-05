@@ -1,0 +1,22 @@
+.search-results {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-results li {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.search-results li:hover {
+    background-color: #f2f2f2;
+}

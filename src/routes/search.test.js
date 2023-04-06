@@ -16,7 +16,7 @@ describe("Unit test cases for Search", () => {
   
         const response = await request(app)
           .get("/search/")
-          .expect(400);
+          .expect(404);
       });
     
     afterAll((done) => {

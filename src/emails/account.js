@@ -1,6 +1,6 @@
 import sgMail from "@sendgrid/mail";
 
-//sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 sgMail.setApiKey(
   "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"
 );

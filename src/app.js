@@ -11,7 +11,6 @@ import { categoryRouter } from "./routes/category";
 import { productRouter } from "./routes/product";
 import { orderRouter } from "./routes/order";
 
-
 const app = express();
 app.use(express.json());
 // for encoding the URL
@@ -46,6 +45,5 @@ app.use("/auth", userRouter);
 app.use("/categories", categoryRouter);
 app.use("/products", productRouter);
 app.use("/order", orderRouter);
-
 
 module.exports = app;

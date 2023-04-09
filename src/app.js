@@ -1,5 +1,4 @@
 import express from "express";
-// import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import path from "path";
 import dotenv from "dotenv";

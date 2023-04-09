@@ -1,7 +1,6 @@
 import express from "express";
 import Category from "../model/category"
 import Product from "../model/product"
-
 export const searchRouter = express.Router();
 
 searchRouter.get("/", async (req, res) => {
